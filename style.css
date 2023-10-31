@@ -1,0 +1,15 @@
+.fa-regular{
+    font-size: 64px;
+}
+
+.card{
+    margin-top: 16px;
+}
+
+/* #winningChoice{
+    display: inline-block;
+} */
+
+#winningChoice{
+    text-transform: capitalize;
+}
