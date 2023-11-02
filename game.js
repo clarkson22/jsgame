@@ -243,6 +243,9 @@ function win(userChoice) {
 }
 
 function reset() {
+	sessionStorage.setItem("gamesPlayed", "0");
+	gamesPlayed.textContent = Number(sessionStorage.getItem("gamesPlayed"));
+
 	sessionStorage.setItem("wins", "0");
 	wins.textContent = Number(sessionStorage.getItem("wins"));
 
