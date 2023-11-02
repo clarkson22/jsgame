@@ -2,6 +2,7 @@ var userChoice;
 var computerChoiceNum;
 var computerChoice;
 
+sessionStorage.setItem("gamesPlayed", "0");
 sessionStorage.setItem("wins", "0");
 sessionStorage.setItem("losses", "0");
 sessionStorage.setItem("ties", "0");
@@ -34,6 +35,7 @@ const userLastChoice = document.getElementById("userLastChoice");
 const computerLastChoice = document.getElementById("computerLastChoice");
 const winorlose = document.getElementById("winorlose");
 
+const gamesPlayed = document.getElementById("gamesPlayedStat");
 const wins = document.getElementById("winStat");
 const losses = document.getElementById("lossStat");
 const ties = document.getElementById("tieStat");
@@ -81,7 +83,10 @@ function evaluateWin(userChoice) {
 		winorlose.className = ""
 		winorlose.classList.add("text-primary");
 
-		//update counter
+		//update counters
+		sessionStorage.setItem("gamesPlayed", Number(sessionStorage.getItem("gamesPlayed")) + 1);
+		gamesPlayed.textContent = Number(sessionStorage.getItem("gamesPlayed"));
+
 		sessionStorage.setItem("ties", Number(sessionStorage.getItem("ties")) + 1);
 		ties.textContent = Number(sessionStorage.getItem("ties"));
 	}
@@ -211,7 +216,10 @@ function lose(userChoice) {
 	winorlose.className = ""
 	winorlose.classList.add("text-danger");
 
-	//update counter
+	//update counters
+	sessionStorage.setItem("gamesPlayed", Number(sessionStorage.getItem("gamesPlayed")) + 1);
+	gamesPlayed.textContent = Number(sessionStorage.getItem("gamesPlayed"));
+
 	sessionStorage.setItem("losses", Number(sessionStorage.getItem("losses")) + 1);
 	losses.textContent = Number(sessionStorage.getItem("losses"));
 
@@ -226,7 +234,10 @@ function win(userChoice) {
 	winorlose.className = ""
 	winorlose.classList.add("text-success");
 
-	//update counter
+	//update counters
+	sessionStorage.setItem("gamesPlayed", Number(sessionStorage.getItem("gamesPlayed")) + 1);
+	gamesPlayed.textContent = Number(sessionStorage.getItem("gamesPlayed"));
+	
 	sessionStorage.setItem("wins", Number(sessionStorage.getItem("wins")) + 1);
 	wins.textContent = Number(sessionStorage.getItem("wins"));
 }
