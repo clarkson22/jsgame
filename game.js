@@ -77,6 +77,10 @@ function evaluateWin(userChoice) {
 		action.textContent = actions[0];
 		winorlose.textContent = winText[0];
 
+		//set text color
+		winorlose.className = ""
+		winorlose.classList.add("text-primary");
+
 		//update counter
 		sessionStorage.setItem("ties", Number(sessionStorage.getItem("ties")) + 1);
 		ties.textContent = Number(sessionStorage.getItem("ties"));
@@ -203,6 +207,10 @@ function lose(userChoice) {
 	losingChoice.textContent = userChoice;
 	winorlose.textContent = winText[2];
 
+	//set text color
+	winorlose.className = ""
+	winorlose.classList.add("text-danger");
+
 	//update counter
 	sessionStorage.setItem("losses", Number(sessionStorage.getItem("losses")) + 1);
 	losses.textContent = Number(sessionStorage.getItem("losses"));
@@ -214,12 +222,16 @@ function win(userChoice) {
 	losingChoice.textContent = computerChoice;
 	winorlose.textContent = winText[1];
 
+	//set text color
+	winorlose.className = ""
+	winorlose.classList.add("text-success");
+
 	//update counter
 	sessionStorage.setItem("wins", Number(sessionStorage.getItem("wins")) + 1);
 	wins.textContent = Number(sessionStorage.getItem("wins"));
 }
 
-function reset(){
+function reset() {
 	sessionStorage.setItem("wins", "0");
 	wins.textContent = Number(sessionStorage.getItem("wins"));
 
