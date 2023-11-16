@@ -64,148 +64,160 @@ function evaluateWin(userChoice) {
 		return false;
 	}
 
-	//update visuals for computer's choice
+	//change to waiting hourglass
 	computerChoiceIcon.className = "fa-regular";
-	computerChoiceIcon.classList.add("fa-hand-" + computerChoice);
+	computerChoiceIcon.classList.add("fa-hourglass");
+	computerChoiceIcon.classList.add("fa-spin");
 
-	//set the text of what you and computer chose
-	userLastChoice.textContent = userChoice;
-	computerLastChoice.textContent = computerChoice;
+	//pause for a second before displaying result
+	setTimeout(after_pause, 400);
 
-	//evaluate for a tie first
-	if (userChoice == computerChoice) {
-		winningChoice.textContent = userChoice;
-		losingChoice.textContent = computerChoice;
-		action.textContent = actions[0];
-		winorlose.textContent = winText[0];
+	function after_pause() {
 
-		//set text color
-		winorlose.className = ""
-		winorlose.classList.add("text-primary");
+		computerChoiceIcon.classList.remove("fa-spin");
 
-		//update counters
-		sessionStorage.setItem("gamesPlayed", Number(sessionStorage.getItem("gamesPlayed")) + 1);
-		gamesPlayed.textContent = Number(sessionStorage.getItem("gamesPlayed"));
 
-		sessionStorage.setItem("ties", Number(sessionStorage.getItem("ties")) + 1);
-		ties.textContent = Number(sessionStorage.getItem("ties"));
-	}
+		//update visuals for computer's choice
+		computerChoiceIcon.className = "fa-regular";
+		computerChoiceIcon.classList.add("fa-hand-" + computerChoice);
 
-	else {
-		switch (userChoice) {
-			case "rock":
-				//user did rock
-				switch (computerChoice) {
-					case "paper":
-						action.textContent = actions[2];
-						lose(userChoice);
-						break;
-					case "scissors":
-						action.textContent = actions[1];
-						win(userChoice);
-						break;
-					case "lizard":
-						action.textContent = actions[1];
-						win(userChoice);
-						break;
-					case "spock":
-						action.textContent = actions[9];
-						lose(userChoice);
-						break;
-				}
-				break;
+		//set the text of what you and computer chose
+		userLastChoice.textContent = userChoice;
+		computerLastChoice.textContent = computerChoice;
 
-			case "paper":
-				//user did paper
-				switch (computerChoice) {
-					case "rock":
-						action.textContent = actions[2];
-						win(userChoice);
-						break;
-					case "scissors":
-						action.textContent = actions[3];
-						lose(userChoice);
-						break;
-					case "lizard":
-						action.textContent = actions[4];
-						lose(userChoice);
-						break;
-					case "spock":
-						action.textContent = actions[7];
-						win(userChoice);
-						break;
-				}
-				break;
+		//evaluate for a tie first
+		if (userChoice == computerChoice) {
+			winningChoice.textContent = userChoice;
+			losingChoice.textContent = computerChoice;
+			action.textContent = actions[0];
+			winorlose.textContent = winText[0];
 
-			case "scissors":
-				//user did scissors
-				switch (computerChoice) {
-					case "rock":
-						action.textContent = actions[1];
-						lose(userChoice);
-						break;
-					case "paper":
-						action.textContent = actions[3];
-						win(userChoice);
-						break;
-					case "lizard":
-						action.textContent = actions[6];
-						win(userChoice);
-						break;
-					case "spock":
-						action.textContent = actions[5];
-						lose(userChoice);
-						break;
-				}
-				break;
+			//set text color
+			winorlose.className = ""
+			winorlose.classList.add("text-primary");
 
-			case "lizard":
-				//user did lizard
-				switch (computerChoice) {
-					case "rock":
-						action.textContent = actions[1];
-						lose(userChoice);
-						break;
-					case "paper":
-						action.textContent = actions[4];
-						win(userChoice);
-						break;
-					case "scissors":
-						action.textContent = actions[6];
-						lose(userChoice);
-						break;
-					case "spock":
-						action.textContent = actions[8];
-						win(userChoice);
-						break;
-				}
-				break;
-			case "spock":
-				//user did spock
-				switch (computerChoice) {
-					case "rock":
-						action.textContent = actions[9];
-						win(userChoice);
-						break;
-					case "paper":
-						action.textContent = actions[7];
-						lose(userChoice);
-						break;
-					case "scissors":
-						action.textContent = actions[5];
-						win(userChoice);
-						break;
-					case "lizard":
-						action.textContent = actions[8];
-						lose(userChoice);
-						break;
-				}
-				break;
+			//update counters
+			sessionStorage.setItem("gamesPlayed", Number(sessionStorage.getItem("gamesPlayed")) + 1);
+			gamesPlayed.textContent = Number(sessionStorage.getItem("gamesPlayed"));
+
+			sessionStorage.setItem("ties", Number(sessionStorage.getItem("ties")) + 1);
+			ties.textContent = Number(sessionStorage.getItem("ties"));
+		}
+
+		else {
+			switch (userChoice) {
+				case "rock":
+					//user did rock
+					switch (computerChoice) {
+						case "paper":
+							action.textContent = actions[2];
+							lose(userChoice);
+							break;
+						case "scissors":
+							action.textContent = actions[1];
+							win(userChoice);
+							break;
+						case "lizard":
+							action.textContent = actions[1];
+							win(userChoice);
+							break;
+						case "spock":
+							action.textContent = actions[9];
+							lose(userChoice);
+							break;
+					}
+					break;
+
+				case "paper":
+					//user did paper
+					switch (computerChoice) {
+						case "rock":
+							action.textContent = actions[2];
+							win(userChoice);
+							break;
+						case "scissors":
+							action.textContent = actions[3];
+							lose(userChoice);
+							break;
+						case "lizard":
+							action.textContent = actions[4];
+							lose(userChoice);
+							break;
+						case "spock":
+							action.textContent = actions[7];
+							win(userChoice);
+							break;
+					}
+					break;
+
+				case "scissors":
+					//user did scissors
+					switch (computerChoice) {
+						case "rock":
+							action.textContent = actions[1];
+							lose(userChoice);
+							break;
+						case "paper":
+							action.textContent = actions[3];
+							win(userChoice);
+							break;
+						case "lizard":
+							action.textContent = actions[6];
+							win(userChoice);
+							break;
+						case "spock":
+							action.textContent = actions[5];
+							lose(userChoice);
+							break;
+					}
+					break;
+
+				case "lizard":
+					//user did lizard
+					switch (computerChoice) {
+						case "rock":
+							action.textContent = actions[1];
+							lose(userChoice);
+							break;
+						case "paper":
+							action.textContent = actions[4];
+							win(userChoice);
+							break;
+						case "scissors":
+							action.textContent = actions[6];
+							lose(userChoice);
+							break;
+						case "spock":
+							action.textContent = actions[8];
+							win(userChoice);
+							break;
+					}
+					break;
+				case "spock":
+					//user did spock
+					switch (computerChoice) {
+						case "rock":
+							action.textContent = actions[9];
+							win(userChoice);
+							break;
+						case "paper":
+							action.textContent = actions[7];
+							lose(userChoice);
+							break;
+						case "scissors":
+							action.textContent = actions[5];
+							win(userChoice);
+							break;
+						case "lizard":
+							action.textContent = actions[8];
+							lose(userChoice);
+							break;
+					}
+					break;
+			}
 		}
 	}
-
 }
-
 function lose(userChoice) {
 	console.log(userChoice);
 	winningChoice.textContent = computerChoice;
@@ -237,7 +249,7 @@ function win(userChoice) {
 	//update counters
 	sessionStorage.setItem("gamesPlayed", Number(sessionStorage.getItem("gamesPlayed")) + 1);
 	gamesPlayed.textContent = Number(sessionStorage.getItem("gamesPlayed"));
-	
+
 	sessionStorage.setItem("wins", Number(sessionStorage.getItem("wins")) + 1);
 	wins.textContent = Number(sessionStorage.getItem("wins"));
 }
@@ -254,5 +266,6 @@ function reset() {
 
 	sessionStorage.setItem("ties", "0");
 	ties.textContent = Number(sessionStorage.getItem("ties"));
+
 
 }
